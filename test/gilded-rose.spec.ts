@@ -65,7 +65,7 @@ describe("GildedRose", () => {
           expect(items[0].quality).toBe(50); // Remains 50
         });
 
-        it("should not decrease quality or sellin of sulfuras item", () => {
+        it("should not decrease quality or sellin of sulfuras item and has fixed quality and sellIn", () => {
           // Arrange
           const gildedRose = new GildedRose([ItemFactory.createItem('Sulfuras, Hand of Ragnaros', 10, 20)]);
 
@@ -73,8 +73,8 @@ describe("GildedRose", () => {
           const items = gildedRose.updateQuality();
 
           // Assert
-          expect(items[0].sellIn).toBe(10); // sellIn does not decrease
-          expect(items[0].quality).toBe(20); // quality does not decrease
+          expect(items[0].sellIn).toBe(0); // sellIn does not decrease
+          expect(items[0].quality).toBe(80); // quality does not decrease
         });
 
         it("should increases quality by 1 for backstage passes with sellIn 11 or more", () => {

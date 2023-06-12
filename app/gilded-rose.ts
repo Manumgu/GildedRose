@@ -63,6 +63,12 @@ export class AgedBrieItem extends BaseItem {
 }
 
 export class SulfurasItem extends BaseItem {
+  private static readonly DEFAULT_QUALITY = 80;
+
+  constructor (name: string) {
+    super(name, 0, SulfurasItem.DEFAULT_QUALITY);
+  }
+
   updateQuality() {
   }
 }
@@ -95,7 +101,7 @@ export class ItemFactory {
       case "Aged Brie":
         return new AgedBrieItem(name, sellIn, quality);
       case "Sulfuras, Hand of Ragnaros":
-        return new SulfurasItem(name, sellIn, quality);
+        return new SulfurasItem(name);
       case "Backstage passes to a TAFKAL80ETC concert":
         return new BackstagePassItem(name, sellIn, quality);
       default:
