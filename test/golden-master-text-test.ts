@@ -1,4 +1,6 @@
-import { BaseItem, GildedRose, ItemFactory } from '../app/gilded-rose';
+import { GildedRose } from '../app/gilded-rose';
+import { ItemFactory } from "@/ItemFactory";
+import { BaseItem } from "@/BaseItem";
 
 const items = [
   ItemFactory.createItem("+5 Dexterity Vest", 10, 20), //
