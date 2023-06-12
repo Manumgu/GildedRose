@@ -48,7 +48,7 @@ export class BaseItem extends Item {
   }
 }
 
-export class AgedBrie extends BaseItem {
+export class AgedBrieItem extends BaseItem {
   updateQuality() {
     if (!this.isMaxQuality()) {
       this.upgradeItemUnit();
@@ -62,13 +62,12 @@ export class AgedBrie extends BaseItem {
   }
 }
 
-export class Sulfuras extends BaseItem {
+export class SulfurasItem extends BaseItem {
   updateQuality() {
-    // Quality and sellIn do not change
   }
 }
 
-export class BackstagePass extends BaseItem {
+export class BackstagePassItem extends BaseItem {
   updateQuality() {
     if (!this.isMaxQuality()) {
       this.upgradeItemUnit();
@@ -94,11 +93,11 @@ export class ItemFactory {
   static createItem(name: string, sellIn: number, quality: number): BaseItem {
     switch (name) {
       case "Aged Brie":
-        return new AgedBrie(name, sellIn, quality);
+        return new AgedBrieItem(name, sellIn, quality);
       case "Sulfuras, Hand of Ragnaros":
-        return new Sulfuras(name, sellIn, quality);
+        return new SulfurasItem(name, sellIn, quality);
       case "Backstage passes to a TAFKAL80ETC concert":
-        return new BackstagePass(name, sellIn, quality);
+        return new BackstagePassItem(name, sellIn, quality);
       default:
         return new BaseItem(name, sellIn, quality);
     }
