@@ -1,8 +1,8 @@
-import { AgedBrieItem } from "./AgedBrieItem";
-import { BackstagePassItem } from "./BackstagePassItem";
-import { BaseItem } from "./BaseItem";
-import { ConjuredItem } from "./ConjuredItem";
-import { SulfurasItem } from "./SulfurasItem";
+import { AgedBrieItem } from "../models/AgedBrieItem";
+import { BackstagePassItem } from "../models/BackstagePassItem";
+import { BaseItem } from "../models/BaseItem";
+import { ConjuredItem } from "../models/ConjuredItem";
+import { SulfurasItem } from "../models/SulfurasItem";
 
 
 export class ItemFactory {

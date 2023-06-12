@@ -1,5 +1,5 @@
 import { Item } from "./Item";
-import { GildedRose } from "./gilded-rose";
+import { GildedRose } from "../gilded-rose";
 
 
 export class BaseItem extends Item {

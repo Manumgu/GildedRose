@@ -1,4 +1,4 @@
-import { BaseItem } from "./BaseItem";
+import { BaseItem } from "./models/BaseItem";
 
 export class GildedRose {
   public static readonly MAX_QUALITY: number = 50;
