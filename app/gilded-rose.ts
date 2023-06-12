@@ -95,18 +95,35 @@ export class BackstagePassItem extends BaseItem {
   }
 }
 
+export class ConjuredItem extends BaseItem {
+  updateQuality() {
+      if (this.quality > 0) {
+        this.modifyItemQuality(-2);
+          if (this.quality < 0) this.quality = 0;
+      }
+
+      this.decreaseSellInUnit()
+
+      if (this.hasExpired() && this.quality > 0) {
+        this.modifyItemQuality(-2);
+          if (this.hasExpired()) this.quality = 0;
+      }
+  }
+}
+
 export class ItemFactory {
   static createItem(name: string, sellIn: number, quality: number): BaseItem {
-    switch (name) {
-      case "Aged Brie":
-        return new AgedBrieItem(name, sellIn, quality);
-      case "Sulfuras, Hand of Ragnaros":
-        return new SulfurasItem(name);
-      case "Backstage passes to a TAFKAL80ETC concert":
-        return new BackstagePassItem(name, sellIn, quality);
-      default:
-        return new BaseItem(name, sellIn, quality);
-    }
+      if (name === 'Aged Brie') {
+          return new AgedBrieItem(name, sellIn, quality);
+      } else if (name === 'Sulfuras, Hand of Ragnaros') {
+          return new SulfurasItem(name);
+      } else if (name === 'Backstage passes to a TAFKAL80ETC concert') {
+          return new BackstagePassItem(name, sellIn, quality);
+      } else if (name.startsWith('Conjured')) {
+          return new ConjuredItem(name, sellIn, quality);
+      } else {
+          return new BaseItem(name, sellIn, quality);
+      }
   }
 }
 

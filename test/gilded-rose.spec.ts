@@ -136,5 +136,17 @@ describe("GildedRose", () => {
         expect(items[0].sellIn).toBe(9);
         expect(items[0].quality).toBe(0); // Remains 0
       });
+
+      it("should degrade conjured items twice as fast", () => {
+        // Arrange
+        const gildedRose = new GildedRose([ItemFactory.createItem('Conjured Mana Cake', 10, 20)]);
+
+        // Act
+        const items = gildedRose.updateQuality();
+
+        // Assert
+        expect(items[0].sellIn).toBe(9);
+        expect(items[0].quality).toBe(18); // Decreased by 2
+    });
     });
 });
