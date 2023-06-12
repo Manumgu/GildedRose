@@ -1,4 +1,5 @@
-import { BaseItem, GildedRose, ItemFactory } from '@/gilded-rose';
+import { GildedRose } from '@/gilded-rose';
+import { ItemFactory } from "@/helpers/ItemFactory";
 
 describe("GildedRose", () => {
     it("creates a new item correctly", () => {
