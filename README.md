@@ -1,0 +1,2 @@
+# GildedRose
+GildedRose refactoring kata
