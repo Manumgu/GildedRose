@@ -34,47 +34,71 @@ export class GildedRose {
     return this.items;
   }
 
+  private static hasExpired(item: Item) {
+    return item.sellIn < 0;
+  }
+
+  private static decreaseSellInUnit(item: Item) {
+    item.sellIn = item.sellIn - 1;
+  }
+
+  private static isMaxQuality(item: Item) {
+    return item.quality === GildedRose.MAX_QUALITY;
+  }
+
+  private static modifyItemQuality(item: Item, amount: number) {
+    item.quality = item.quality + amount;
+  }
+
+  private static upgradeItemUnit(item: Item) {
+    GildedRose.modifyItemQuality(item, 1);
+  }
+
+  private static downgradeItemUnit(item: Item) {
+    GildedRose.modifyItemQuality(item, -1);
+  }
+
   private updateBrie(item: Item) {
     if (item.quality < GildedRose.MAX_QUALITY) {
-      item.quality += 1;
+      GildedRose.upgradeItemUnit(item);
     }
 
-    item.sellIn -= 1;
+    GildedRose.decreaseSellInUnit(item);
 
-    if (item.sellIn < 0 && item.quality < GildedRose.MAX_QUALITY) {
-      item.quality += 1;
+    if (GildedRose.hasExpired(item) && !GildedRose.isMaxQuality(item)) {
+      GildedRose.upgradeItemUnit(item);
     }
   }
 
   private updateBackstagePasses(item: Item) {
-    if (item.quality < GildedRose.MAX_QUALITY) {
-      item.quality += 1;
+    if (!GildedRose.isMaxQuality(item)) {
+      GildedRose.upgradeItemUnit(item);
 
-      if (item.sellIn <= 10 && item.quality < GildedRose.MAX_QUALITY) {
-        item.quality += 1;
+      if (item.sellIn <= 10 && !GildedRose.isMaxQuality(item)) {
+        GildedRose.upgradeItemUnit(item);
       }
 
-      if (item.sellIn <= 5 && item.quality < GildedRose.MAX_QUALITY) {
-        item.quality += 1;
+      if (item.sellIn <= 5 && !GildedRose.isMaxQuality(item)) {
+        GildedRose.upgradeItemUnit(item);
       }
     }
 
-    item.sellIn -= 1;
+    GildedRose.decreaseSellInUnit(item);
 
-    if (item.sellIn < 0) {
-      item.quality = 0;
+    if (GildedRose.hasExpired(item)) {
+      GildedRose.modifyItemQuality(item, -item.quality);
     }
   }
 
   private updateNormal(item: Item) {
     if (item.quality > 0) {
-      item.quality -= 1;
+      GildedRose.downgradeItemUnit(item);
     }
 
-    item.sellIn -= 1;
+    GildedRose.decreaseSellInUnit(item);
 
-    if (item.sellIn < 0 && item.quality > 0) {
-      item.quality -= 1;
+    if (GildedRose.hasExpired(item) && item.quality > 0) {
+      GildedRose.downgradeItemUnit(item);
     }
   }
 }
