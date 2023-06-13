@@ -1,3 +1,9 @@
+# Intro
+This is a resolution proposal for Gilded Rose kata. The original code can be found [here](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/TypeScript).
+To solve this 'kata', I relied on the ['Golden Masters' technique](https://stevenschwenke.de/whatIsTheGoldenMasterTechnique). The characterization test used can be found [here](https://github.com/Manumgu/gilded-rose/blob/main/test/gilded-rose.spec.ts)
+
+The branches in this repo can be used as verification steps or even extra documentation, but they do not reflect my actual thought process.
+
 # How to
 1. Clone the project
 `git clone https://github.com/Manumgu/gilded-rose.git`
