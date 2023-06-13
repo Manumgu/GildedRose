@@ -1,3 +1,18 @@
+# How to
+1. Clone the project
+`git clone https://github.com/Manumgu/gilded-rose.git`
+
+2. Move to the directory
+`cd gilded-rose`
+
+3. Install the dependencies
+`npm i`
+
+4. Run the tests or text based template
+`npm run test:jest`
+`npx node-ts test/golden-master-text-test.ts`
+
+
 # Requirements Specification
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
